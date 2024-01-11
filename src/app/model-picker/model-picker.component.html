@@ -1,0 +1,21 @@
+<b>Step 1: Choose your Model and Color</b>
+<div>
+  Model:
+  <select (change)="onChangeModel($event)">
+    <option selected>Choose...</option>
+    <option *ngFor="let model of models">{{model.description}}</option>
+  </select>
+
+  <ng-container *ngIf="selectedModel">
+    Color:
+    <select (change)="onChangeColor($event)">
+      <option *ngFor="let color of selectedModel?.colors">{{color.description}}</option>
+    </select>
+  </ng-container>
+
+  <ng-container *ngIf="selectedModel">
+    <div>
+      <img src={{imageSource}}>
+    </div>
+  </ng-container>
+</div>
