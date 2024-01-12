@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Config, Option, OptionService } from '../option.service';
 import { NgFor, NgIf } from '@angular/common';
 import { ConfigPipe } from '../config.pipe';
+import { DataShareService } from '../data-share.service';
 
 @Component({
   selector: 'model-configurator',
@@ -12,16 +13,15 @@ import { ConfigPipe } from '../config.pipe';
 })
 export class ModelConfiguratorComponent implements OnInit {
 
-  @Input() selectedModel?: string;
   availableOptions?: Option;
   selectedConfig?: Config;
 
-  constructor(private optionService: OptionService) {}
+  constructor(private optionService: OptionService, private dataShare: DataShareService) {}
 
   ngOnInit(): void {
-    if (this.selectedModel) {
+    if (this.dataShare.selectedModel) {
       this.optionService
-        .fetchOption(this.selectedModel)
+        .fetchOption(this.dataShare.selectedModel.code)
         .subscribe(option => this.availableOptions = option);
     }
   }

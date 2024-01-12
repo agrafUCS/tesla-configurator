@@ -1,6 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Color, Model, ModelService } from '../model.service';
+import { DataShareService } from '../data-share.service';
 
 @Component({
   selector: 'model-picker',
@@ -11,10 +12,12 @@ import { Color, Model, ModelService } from '../model.service';
 })
 export class ModelPickerComponent implements OnInit {
   models: Model[] = [];
-  selectedModel?: Model;
+
+  model?: Model;
+
   selectedColor?: Color;
 
-  constructor(private modelService: ModelService) {}
+  constructor(private modelService: ModelService, private dataShare: DataShareService) {}
 
   ngOnInit(): void {
     console.log('OnInit Model Picker');
@@ -27,23 +30,25 @@ export class ModelPickerComponent implements OnInit {
   }
 
   onChangeModel(selectedModelEvent: any) {
-    const model = this.models.find(model => model.description === selectedModelEvent.target.value);
+    this.model = this.models.find(model => model.description === selectedModelEvent.target.value);
+    console.log(this.model);
 
-    if (model) {
-      this.selectedModel = model;
-      this.selectedColor = this.selectedModel?.colors?.[0];
+    if (this.model) {
+      this.dataShare.selectedModel = this.model;
+      this.selectedColor = this.model?.colors?.[0];
     } else {
-      this.selectedModel = undefined;
+      this.dataShare.selectedModel = undefined;
+      this.model = undefined;
       this.selectedColor = undefined;
     }
   }
 
   onChangeColor(selectedColorEvent: any) {
-    this.selectedColor = this.selectedModel?.colors.find(color => color.description === selectedColorEvent.target.value);
+    this.selectedColor = this.model?.colors.find(color => color.description === selectedColorEvent.target.value);
   }
 
   get imageSource() {
-    return `https://interstate21.com/tesla-app/images/${this.selectedModel?.code}/${this.selectedColor?.code}.jpg`;
+    return `https://interstate21.com/tesla-app/images/${this.model?.code}/${this.selectedColor?.code}.jpg`;
   }
 
 }
