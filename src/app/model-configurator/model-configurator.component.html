@@ -1,0 +1,17 @@
+<b>Step 2: Select your config and options</b>
+<div>
+  Config:
+  <select (change)="onChange($event)">
+    <option selected>Choose...</option>
+    <option *ngFor="let config of availableOptions?.configs ?? []">{{config.description}}</option>
+  </select>
+<div>
+  {{selectedConfig | config}}
+</div>
+<div *ngIf="availableOptions?.towHitch">
+  Tow hitch? <input type="checkbox">
+</div>
+<div *ngIf="availableOptions?.yoke">
+  Yoke steering wheel? <input type="checkbox">
+</div>
+</div>
