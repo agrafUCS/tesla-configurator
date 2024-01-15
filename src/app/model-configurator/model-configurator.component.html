@@ -9,9 +9,9 @@
   {{selectedConfig | config}}
 </div>
 <div *ngIf="availableOptions?.towHitch">
-  Tow hitch? <input type="checkbox">
+  Tow hitch? <input (change)="onTowHitchChange($event)" type="checkbox">
 </div>
 <div *ngIf="availableOptions?.yoke">
-  Yoke steering wheel? <input type="checkbox">
+  Yoke steering wheel? <input (change)="onYokeChange($event)" type="checkbox">
 </div>
 </div>

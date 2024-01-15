@@ -1,18 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-export type Color = {
-  code: string,
-  description: string,
-  price: number
-};
-
-export type Model = {
-  code: string,
-  description: string,
-  colors: Color[]
-};
+import { Model } from './types/common';
 
 @Injectable({
   providedIn: 'root',

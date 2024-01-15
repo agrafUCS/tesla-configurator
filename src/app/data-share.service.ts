@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Model } from './model.service';
+import { AppState } from './types/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataShareService {
 
-  selectedModel?: Model;
+  appState: AppState = {} as AppState;
 
-  constructor() { }
+  constructor() {}
+
 }

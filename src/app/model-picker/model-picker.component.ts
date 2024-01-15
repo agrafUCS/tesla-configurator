@@ -1,7 +1,8 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Color, Model, ModelService } from '../model.service';
+import { ModelService } from '../model.service';
 import { DataShareService } from '../data-share.service';
+import { Color, Model } from '../types/common';
 
 @Component({
   selector: 'model-picker',
@@ -20,31 +21,31 @@ export class ModelPickerComponent implements OnInit {
   constructor(private modelService: ModelService, private dataShare: DataShareService) {}
 
   ngOnInit(): void {
-    console.log('OnInit Model Picker');
     this.modelService.fetchModels().subscribe(models => this.init(models));
+    this.model = this.dataShare.appState.model;
+    this.selectedColor = this.dataShare.appState.color;
   }
 
   init(models: Model[]) {
-    console.log('Init Model Picker');
     this.models = models;
   }
 
   onChangeModel(selectedModelEvent: any) {
     this.model = this.models.find(model => model.description === selectedModelEvent.target.value);
-    console.log(this.model);
 
     if (this.model) {
-      this.dataShare.selectedModel = this.model;
       this.selectedColor = this.model?.colors?.[0];
     } else {
-      this.dataShare.selectedModel = undefined;
       this.model = undefined;
       this.selectedColor = undefined;
     }
+    this.dataShare.appState.model = this.model;
+    this.dataShare.appState.color = this.selectedColor;
   }
 
   onChangeColor(selectedColorEvent: any) {
     this.selectedColor = this.model?.colors.find(color => color.description === selectedColorEvent.target.value);
+    this.dataShare.appState.color = this.selectedColor;
   }
 
   get imageSource() {

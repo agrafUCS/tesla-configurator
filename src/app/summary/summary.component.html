@@ -1,0 +1,33 @@
+<div>
+  <b>Step 3: Summary</b>
+
+  <div>
+    <b>Your Tesla {{appState?.model?.description}}</b>
+  </div>
+
+  <table>
+    <tr>
+      <td><b>{{appState?.config?.description}}</b></td>
+      <td>{{appState?.config?.price | currency}}</td>
+    </tr>
+    <tr>
+      <td>{{appState?.config | config: "excludeCost"}}</td>
+    </tr>
+    <tr *ngIf="(appState?.color?.price ?? 0) > 0">
+      <td><b>{{appState?.color?.description}}</b></td>
+      <td>{{appState?.color?.price | currency}}</td>
+    </tr>
+    <tr *ngIf="appState?.towHitch">
+      <td><b>Tow Hitch Package</b></td>
+      <td>{{1000 | currency}}</td>
+    </tr>
+    <tr *ngIf="appState?.yoke">
+      <td><b>Yoke Package</b></td>
+      <td>{{1000 | currency}}</td>
+    </tr>
+    <tr>
+      <td><b>Total Cost</b></td>
+      <td>{{total | currency}}</td>
+    </tr>
+  </table>
+</div>

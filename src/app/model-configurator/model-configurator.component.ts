@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Config, Option, OptionService } from '../option.service';
+import { OptionService } from '../option.service';
 import { NgFor, NgIf } from '@angular/common';
 import { ConfigPipe } from '../config.pipe';
 import { DataShareService } from '../data-share.service';
+import { Option, Config } from '../types/common';
 
 @Component({
   selector: 'model-configurator',
@@ -19,15 +20,26 @@ export class ModelConfiguratorComponent implements OnInit {
   constructor(private optionService: OptionService, private dataShare: DataShareService) {}
 
   ngOnInit(): void {
-    if (this.dataShare.selectedModel) {
+    if (this.dataShare.appState.model) {
       this.optionService
-        .fetchOption(this.dataShare.selectedModel.code)
-        .subscribe(option => this.availableOptions = option);
+        .fetchOption(this.dataShare.appState.model.code)
+        .subscribe(option => {
+          this.availableOptions = option;
+        });
     }
   }
 
   onChange(event: any) {
     const config = this.availableOptions?.configs.find(config => config.description === event.target.value);
     this.selectedConfig = config;
+    this.dataShare.appState.config = this.selectedConfig;
+  }
+
+  onTowHitchChange(event: any) {
+    this.dataShare.appState.towHitch = event.target.checked;
+  }
+
+  onYokeChange(event: any) {
+    this.dataShare.appState.yoke = event.target.checked;
   }
 }

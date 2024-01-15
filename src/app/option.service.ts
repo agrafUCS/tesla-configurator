@@ -1,20 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-export type Config = {
-  id: number,
-  description: string,
-  range: number,
-  speed: number,
-  price: number
-};
-
-export type Option = {
-  configs: Config[],
-  towHitch: boolean,
-  yoke: boolean
-};
+import { Option } from './types/common';
 
 @Injectable({
   providedIn: 'root'
