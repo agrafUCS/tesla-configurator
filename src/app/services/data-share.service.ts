@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AppState, Color, Config, Model } from './types/common';
+import { AppState, Color, Config, Model } from '@app-types/common';
 
 @Injectable({
   providedIn: 'root'

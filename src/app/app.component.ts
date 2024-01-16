@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ModelPickerComponent } from './model-picker/model-picker.component';
 import { ModelConfiguratorComponent } from './model-configurator/model-configurator.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { DataShareService } from './data-share.service';
+import { DataShareService } from './services/data-share.service';
 import { AppState } from './types/common';
 import { NgIf } from '@angular/common';
 

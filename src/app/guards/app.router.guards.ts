@@ -1,6 +1,6 @@
 import { inject } from "@angular/core";
 import { CanMatchFn, Route, Router, UrlSegment } from "@angular/router";
-import { DataShareService } from "./data-share.service";
+import { DataShareService } from "../services/data-share.service";
 
 export const canMatchStep2: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
   const dataShare = inject(DataShareService);

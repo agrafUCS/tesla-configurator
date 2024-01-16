@@ -1,8 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ModelService } from '../model.service';
-import { DataShareService } from '../data-share.service';
-import { Color, Model } from '../types/common';
+import { DataShareService } from '@services/data-share.service';
+import { Color, Model } from '@app-types/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

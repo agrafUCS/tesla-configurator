@@ -1,4 +1,4 @@
-import { ConfigPipe } from './config.pipe';
+import { ConfigPipe } from '../resolvers/config.pipe';
 
 describe('ConfigPipe', () => {
   it('create an instance', () => {

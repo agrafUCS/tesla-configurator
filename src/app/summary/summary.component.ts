@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DataShareService } from '../data-share.service';
+import { DataShareService } from '../services/data-share.service';
 import { CurrencyPipe, NgIf } from '@angular/common';
-import { ConfigPipe } from '../config.pipe';
-import { PriceService } from '../price.service';
-import { AppState } from '../types/common';
+import { ConfigPipe } from '@resolvers/config.pipe';
+import { PriceService } from '@services/price.service';
+import { AppState } from '@app-types/common';
 
 @Component({
   selector: 'app-summary',
@@ -22,7 +22,7 @@ export class SummaryComponent implements OnInit {
 
   ngOnInit(): void {
     this.appState = this.dataShare.appState;
-    this.total = this.price.getTotalCost(this.appState);
+    this.total = this.price.getTotalCost(this.appState ?? {} as AppState);
   }
 
 }

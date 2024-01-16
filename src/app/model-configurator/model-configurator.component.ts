@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import { ConfigPipe } from '../config.pipe';
-import { DataShareService } from '../data-share.service';
-import { Option, Config } from '../types/common';
+import { ConfigPipe } from '@resolvers/config.pipe';
+import { DataShareService } from '@services/data-share.service';
+import { Option, Config } from '@app-types/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
