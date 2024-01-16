@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModelService } from '../model.service';
 import { DataShareService } from '../data-share.service';
 import { Color, Model } from '../types/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'model-picker',
@@ -18,10 +19,10 @@ export class ModelPickerComponent implements OnInit {
 
   selectedColor?: Color;
 
-  constructor(private modelService: ModelService, private dataShare: DataShareService) {}
+  constructor(private route: ActivatedRoute, private dataShare: DataShareService) {}
 
   ngOnInit(): void {
-    this.modelService.fetchModels().subscribe(models => this.init(models));
+    this.init(this.route.snapshot.data['models']);
     this.model = this.dataShare.appState.model;
     this.selectedColor = this.dataShare.appState.color;
   }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { OptionService } from '../option.service';
 import { NgFor, NgIf } from '@angular/common';
 import { ConfigPipe } from '../config.pipe';
 import { DataShareService } from '../data-share.service';
 import { Option, Config } from '../types/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'model-configurator',
@@ -16,17 +16,16 @@ export class ModelConfiguratorComponent implements OnInit {
 
   availableOptions?: Option;
   selectedConfig?: Config;
+  towHitch = false;
+  yoke = false;
 
-  constructor(private optionService: OptionService, private dataShare: DataShareService) {}
+  constructor(private route: ActivatedRoute, private dataShare: DataShareService) {}
 
   ngOnInit(): void {
-    if (this.dataShare.appState.model) {
-      this.optionService
-        .fetchOption(this.dataShare.appState.model.code)
-        .subscribe(option => {
-          this.availableOptions = option;
-        });
-    }
+    this.availableOptions = this.route.snapshot.data['options'];
+    this.selectedConfig = this.dataShare.appState.config;
+    this.towHitch = this.dataShare.appState.towHitch;
+    this.yoke = this.dataShare.appState.yoke;
   }
 
   onChange(event: any) {

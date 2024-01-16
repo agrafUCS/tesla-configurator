@@ -2,8 +2,8 @@
 <div>
   Model:
   <select (change)="onChangeModel($event)">
-    <option selected>Choose...</option>
-    <option *ngFor="let model of models">{{model.description}}</option>
+    <option>Choose...</option>
+    <option *ngFor="let modelOption of models" [selected]="model?.code === modelOption.code">{{modelOption.description}}</option>
   </select>
 
   <ng-container *ngIf="model">

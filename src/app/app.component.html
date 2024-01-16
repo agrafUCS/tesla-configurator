@@ -1,7 +1,6 @@
-<nav *ngIf="appState?.model && appState?.color">
-  <a routerLink="step1">Step 1</a>
-  <a routerLink="step2">Step 2</a>
-  <a routerLink="step3">Step 3</a>
-</nav>
+<div>
+  <button *ngIf="appState?.model && appState?.color" routerLink="step1">Step 1</button>
+  <button *ngIf="appState?.model && appState?.color" routerLink="step2/{{appState?.model?.code}}">Step 2</button>
+  <button *ngIf="appState?.config" routerLink="step3">Step 3</button>
+</div>
 <router-outlet></router-outlet>
-

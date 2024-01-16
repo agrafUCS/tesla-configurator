@@ -1,4 +1,11 @@
+table {
+  width: max-content;
+}
+
 td {
   border: 0 none;
-  line-height: 0;
+}
+
+table td:nth-child(2) {
+  text-align: right;
 }
