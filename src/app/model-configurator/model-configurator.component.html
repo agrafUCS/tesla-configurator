@@ -1,7 +1,7 @@
 <b>Step 2: Select your config and options</b>
 <div>
   Config:
-  <select (change)="onChange($event)">
+  <select id="configSelect" (change)="onChange($event)">
     <option>Choose...</option>
     <option *ngFor="let config of availableOptions?.configs" [selected]="config.id === selectedConfig?.id">{{config.description}}</option>
   </select>
@@ -9,9 +9,9 @@
   {{selectedConfig | config}}
 </div>
 <div *ngIf="availableOptions?.towHitch">
-  Tow hitch? <input (change)="onTowHitchChange($event)" [checked]="towHitch" type="checkbox">
+  Tow hitch? <input id="includeTow" (change)="onTowHitchChange($event)" [checked]="towHitch" type="checkbox">
 </div>
 <div *ngIf="availableOptions?.yoke">
-  Yoke steering wheel? <input (change)="onYokeChange($event)" [checked]="yoke" type="checkbox">
+  Yoke steering wheel? <input id="includeYoke" (change)="onYokeChange($event)" [checked]="yoke" type="checkbox">
 </div>
 </div>

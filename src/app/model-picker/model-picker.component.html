@@ -1,14 +1,14 @@
 <b>Step 1: Choose your Model and Color</b>
 <div>
   Model:
-  <select (change)="onChangeModel($event)">
+  <select id="modelSelect" (change)="onChangeModel($event)">
     <option>Choose...</option>
     <option *ngFor="let modelOption of models" [selected]="model?.code === modelOption.code">{{modelOption.description}}</option>
   </select>
 
   <ng-container *ngIf="model">
     Color:
-    <select (change)="onChangeColor($event)">
+    <select id="colorSelect" (change)="onChangeColor($event)">
       <option *ngFor="let color of model?.colors">{{color.description}}</option>
     </select>
   </ng-container>
