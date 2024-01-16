@@ -5,7 +5,7 @@ import { DataShareService } from "./data-share.service";
 export const canMatchStep2: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
   const dataShare = inject(DataShareService);
 
-  if (dataShare.appState.model && dataShare.appState.color) {
+  if (dataShare.model && dataShare.color) {
     return true;
   }
 
@@ -15,7 +15,7 @@ export const canMatchStep2: CanMatchFn = (route: Route, segments: UrlSegment[]) 
 export const canMatchStep3: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
   const dataShare = inject(DataShareService);
 
-  if (dataShare.appState.config) {
+  if (dataShare.config) {
     return true;
   }
 

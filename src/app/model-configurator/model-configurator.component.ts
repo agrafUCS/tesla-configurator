@@ -23,22 +23,22 @@ export class ModelConfiguratorComponent implements OnInit {
 
   ngOnInit(): void {
     this.availableOptions = this.route.snapshot.data['options'];
-    this.selectedConfig = this.dataShare.appState.config;
-    this.towHitch = this.dataShare.appState.towHitch;
-    this.yoke = this.dataShare.appState.yoke;
+    this.selectedConfig = this.dataShare.config;
+    this.towHitch = this.dataShare.towHitch;
+    this.yoke = this.dataShare.yoke;
   }
 
   onChange(event: any) {
     const config = this.availableOptions?.configs.find(config => config.description === event.target.value);
     this.selectedConfig = config;
-    this.dataShare.appState.config = this.selectedConfig;
+    this.dataShare.setConfig(this.selectedConfig);
   }
 
   onTowHitchChange(event: any) {
-    this.dataShare.appState.towHitch = event.target.checked;
+    this.dataShare.setTowHitch(event.target.checked);
   }
 
   onYokeChange(event: any) {
-    this.dataShare.appState.yoke = event.target.checked;
+    this.dataShare.setYoke(event.target.checked);
   }
 }

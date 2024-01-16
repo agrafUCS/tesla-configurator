@@ -23,8 +23,8 @@ export class ModelPickerComponent implements OnInit {
 
   ngOnInit(): void {
     this.init(this.route.snapshot.data['models']);
-    this.model = this.dataShare.appState.model;
-    this.selectedColor = this.dataShare.appState.color;
+    this.model = this.dataShare.model;
+    this.selectedColor = this.dataShare.color;
   }
 
   init(models: Model[]) {
@@ -40,13 +40,13 @@ export class ModelPickerComponent implements OnInit {
       this.model = undefined;
       this.selectedColor = undefined;
     }
-    this.dataShare.appState.model = this.model;
-    this.dataShare.appState.color = this.selectedColor;
+    this.dataShare.setModel(this.model);
+    this.dataShare.setColor(this.selectedColor);
   }
 
   onChangeColor(selectedColorEvent: any) {
     this.selectedColor = this.model?.colors.find(color => color.description === selectedColorEvent.target.value);
-    this.dataShare.appState.color = this.selectedColor;
+    this.dataShare.setColor(this.selectedColor);
   }
 
   get imageSource() {

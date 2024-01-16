@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ModelPickerComponent } from './model-picker/model-picker.component';
 import { ModelConfiguratorComponent } from './model-configurator/model-configurator.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -12,12 +12,16 @@ import { NgIf } from '@angular/common';
   imports: [ModelPickerComponent, ModelConfiguratorComponent, RouterLink, RouterOutlet, NgIf],
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   appState?: AppState;
 
   constructor(private dataShare: DataShareService) {}
 
   ngOnInit() {
     this.appState = this.dataShare.appState;
+  }
+
+  ngOnDestroy(): void {
+    this.dataShare.clearData();
   }
 }
