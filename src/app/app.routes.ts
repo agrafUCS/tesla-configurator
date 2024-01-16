@@ -4,14 +4,21 @@ import { ModelConfiguratorComponent } from './model-configurator/model-configura
 import { SummaryComponent } from './summary/summary.component';
 import { ModelResolver } from './model.resolver';
 import { OptionResolver } from './option.resolver';
+import { canMatchStep2, canMatchStep3 } from './app.router.guards';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'step1', pathMatch: 'full' },
-  { path: 'step1', component: ModelPickerComponent, resolve: {
-    models: ModelResolver
-  }},
-  { path: 'step2/:modelId', component: ModelConfiguratorComponent, resolve: {
-    options: OptionResolver,
-  } },
-  { path: 'step3', component: SummaryComponent }
+  {
+    path: 'step1', component: ModelPickerComponent, resolve: {
+      models: ModelResolver
+    }
+  },
+  {
+    path: 'step2/:modelId', component: ModelConfiguratorComponent, resolve: {
+      options: OptionResolver,
+    },
+    canMatch: [canMatchStep2]
+  },
+  { path: 'step3', component: SummaryComponent, canMatch: [canMatchStep2, canMatchStep3] },
+  { path: '**', redirectTo: 'step1', pathMatch: 'full' }
 ];
