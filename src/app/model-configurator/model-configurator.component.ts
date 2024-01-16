@@ -28,17 +28,20 @@ export class ModelConfiguratorComponent implements OnInit {
     this.yoke = this.dataShare.yoke;
   }
 
-  onChange(event: any) {
-    const config = this.availableOptions?.configs.find(config => config.description === event.target.value);
+  onChange(event: Event) {
+    const target: HTMLSelectElement | null = event.target as HTMLSelectElement;
+    const config = this.availableOptions?.configs.find(config => config.description === target?.value);
     this.selectedConfig = config;
     this.dataShare.setConfig(this.selectedConfig);
   }
 
-  onTowHitchChange(event: any) {
-    this.dataShare.setTowHitch(event.target.checked);
+  onTowHitchChange(event: Event) {
+    const target: HTMLInputElement | null = event.target as HTMLInputElement;
+    this.dataShare.setTowHitch(target?.checked);
   }
 
-  onYokeChange(event: any) {
-    this.dataShare.setYoke(event.target.checked);
+  onYokeChange(event: Event) {
+    const target: HTMLInputElement | null = event.target as HTMLInputElement;
+    this.dataShare.setYoke(target?.checked);
   }
 }

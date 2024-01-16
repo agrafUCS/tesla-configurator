@@ -30,8 +30,9 @@ export class ModelPickerComponent implements OnInit {
     this.models = models;
   }
 
-  onChangeModel(selectedModelEvent: any) {
-    this.model = this.models.find(model => model.description === selectedModelEvent.target.value);
+  onChangeModel(selectedModelEvent: Event) {
+    const target: HTMLSelectElement | null = selectedModelEvent.target as HTMLSelectElement;
+    this.model = this.models.find(model => model.description === target?.value);
 
     if (this.model) {
       this.selectedColor = this.model?.colors?.[0];
@@ -43,8 +44,9 @@ export class ModelPickerComponent implements OnInit {
     this.dataShare.setColor(this.selectedColor);
   }
 
-  onChangeColor(selectedColorEvent: any) {
-    this.selectedColor = this.model?.colors.find(color => color.description === selectedColorEvent.target.value);
+  onChangeColor(selectedColorEvent: Event) {
+    const target: HTMLSelectElement | null = selectedColorEvent.target as HTMLSelectElement;
+    this.selectedColor = this.model?.colors.find(color => color.description === target?.value);
     this.dataShare.setColor(this.selectedColor);
   }
 
