@@ -2,32 +2,32 @@
   <b>Step 3: Summary</b>
 
   <div>
-    <b>Your Tesla {{appState?.model?.description}}</b>
+    <b>Your Tesla {{summary?.model?.description}}</b>
   </div>
 
   <table>
     <tr>
-      <td><b>{{appState?.config?.description}}</b></td>
-      <td>{{appState?.config?.price | currency}}</td>
+      <td><b>{{summary?.config?.description}}</b></td>
+      <td>{{summary?.config?.price | currency}}</td>
     </tr>
     <tr>
-      <td>{{appState?.config | config: "excludeCost"}}</td>
+      <td>{{summary?.config | config: "excludeCost"}}</td>
     </tr>
-    <tr *ngIf="(appState?.color?.price ?? 0) > 0">
-      <td><b>{{appState?.color?.description}}</b></td>
-      <td>{{appState?.color?.price | currency}}</td>
+    <tr *ngIf="(summary?.color?.price ?? 0) > 0">
+      <td><b>{{summary?.color?.description}}</b></td>
+      <td>{{summary?.color?.price | currency}}</td>
     </tr>
-    <tr *ngIf="appState?.towHitch">
+    <tr *ngIf="summary?.towHitch">
       <td><b>Tow Hitch Package</b></td>
       <td>{{1000 | currency}}</td>
     </tr>
-    <tr *ngIf="appState?.yoke">
+    <tr *ngIf="summary?.yoke">
       <td><b>Yoke Package</b></td>
       <td>{{1000 | currency}}</td>
     </tr>
     <tr>
       <td><b>Total Cost</b></td>
-      <td>{{total | currency}}</td>
+      <td>{{summary?.total | currency}}</td>
     </tr>
   </table>
 </div>

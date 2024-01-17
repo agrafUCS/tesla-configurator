@@ -9,7 +9,7 @@
   <ng-container *ngIf="model">
     Color:
     <select id="colorSelect" (change)="onChangeColor($event)">
-      <option *ngFor="let color of model?.colors">{{color.description}}</option>
+      <option *ngFor="let color of model?.colors" [selected]="color.code === selectedColor?.code">{{color.description}}</option>
     </select>
   </ng-container>
 

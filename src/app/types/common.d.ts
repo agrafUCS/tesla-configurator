@@ -31,3 +31,5 @@ export type AppState = {
   towHitch: boolean;
   yoke: boolean;
 }
+
+export type Summary = AppState & { total: number };
