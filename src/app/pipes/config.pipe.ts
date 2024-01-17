@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { Config } from '../types/common';
+import { Config } from '@app-types/common';
 
 @Pipe({
   name: 'config',
