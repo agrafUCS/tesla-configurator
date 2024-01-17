@@ -1,6 +1,6 @@
 <div>
-  <button id="step1" *ngIf="appState?.model && appState?.color" routerLink="step1">Step 1</button>
-  <button id="step2" *ngIf="appState?.model && appState?.color" routerLink="step2/{{appState?.model?.code}}">Step 2</button>
-  <button id="step3" *ngIf="appState?.config" routerLink="step3">Step 3</button>
+  <button id="step1" *ngIf="dataShare.appState?.model && dataShare.appState?.color" routerLink="step1">Step 1</button>
+  <button id="step2" *ngIf="dataShare.appState?.model && dataShare.appState?.color" routerLink="step2/{{dataShare.appState.model?.code}}">Step 2</button>
+  <button id="step3" *ngIf="dataShare.appState?.model && dataShare.appState?.color && dataShare.appState?.config" routerLink="step3">Step 3</button>
 </div>
 <router-outlet></router-outlet>

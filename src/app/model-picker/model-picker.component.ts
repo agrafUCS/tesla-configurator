@@ -32,6 +32,12 @@ export class ModelPickerComponent implements OnInit {
 
   onChangeModel(selectedModelEvent: Event) {
     const target: HTMLSelectElement | null = selectedModelEvent.target as HTMLSelectElement;
+
+    // Reset data
+    if (target.selectedOptions.namedItem('noModelOption')) {
+      this.dataShare.clearData();
+    }
+
     this.model = this.models.find(model => model.description === target?.value);
 
     if (this.model) {

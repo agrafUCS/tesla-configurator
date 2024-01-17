@@ -15,7 +15,7 @@ import { NgIf } from '@angular/common';
 export class AppComponent implements OnInit, OnDestroy {
   appState?: AppState;
 
-  constructor(private dataShare: DataShareService) {}
+  constructor(public dataShare: DataShareService) {}
 
   ngOnInit() {
     this.appState = this.dataShare.appState;

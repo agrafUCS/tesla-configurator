@@ -9,7 +9,7 @@ export class DataShareService {
   private _appState: AppState = {} as AppState;
 
   constructor() {
-    const storedState = localStorage.getItem('appState');
+    const storedState = sessionStorage.getItem('appState');
 
     if (storedState) {
       this._appState = JSON.parse(storedState);
@@ -17,7 +17,7 @@ export class DataShareService {
   }
 
   private persistAppState() {
-    localStorage.setItem('appState', JSON.stringify(this.appState));
+    sessionStorage.setItem('appState', JSON.stringify(this.appState));
   }
 
   setModel(model: Model | undefined) {
@@ -46,7 +46,8 @@ export class DataShareService {
   }
 
   clearData() {
-    localStorage.removeItem('appState');
+    sessionStorage.removeItem('appState');
+    this._appState = {} as AppState;
   }
 
   get model() {
