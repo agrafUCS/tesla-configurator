@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataShareService } from '../services/data-share.service';
 import { CurrencyPipe, NgIf } from '@angular/common';
-import { ConfigPipe } from '@resolvers/config.pipe';
-import { PriceService } from '@services/price.service';
-import { AppState, Summary } from '@app-types/common';
+import { ConfigPipe } from '@pipes/config.pipe';
+import { Summary } from '@app-types/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
