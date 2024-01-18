@@ -36,9 +36,7 @@ export class ModelPickerComponent implements OnInit {
     // Reset data
     if (target.selectedOptions.namedItem('noModelOption')) {
       this.dataShare.clearData();
-    }
-
-    if (!target.selectedOptions.namedItem(this.model?.code ?? '')) {
+    } else if (!target.selectedOptions.namedItem(this.model?.code ?? '')) {
       this.dataShare.clearData();
     }
 
