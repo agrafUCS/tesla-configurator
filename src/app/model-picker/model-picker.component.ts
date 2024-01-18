@@ -38,6 +38,10 @@ export class ModelPickerComponent implements OnInit {
       this.dataShare.clearData();
     }
 
+    if (!target.selectedOptions.namedItem(this.model?.code ?? '')) {
+      this.dataShare.clearData();
+    }
+
     this.model = this.models.find(model => model.description === target?.value);
 
     if (this.model) {
